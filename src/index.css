@@ -200,6 +200,10 @@
     background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
   }
   
+  .float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
   /* Terminal-style text effect */
   .terminal-glitch {
     position: relative;
@@ -301,4 +305,10 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 400ms, transform 400ms;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }

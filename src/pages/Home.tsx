@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -46,13 +45,13 @@ export default function Home() {
   
   return (
     <PageTransition>
-      {/* Hero Section */}
+      {/* Hero Section - Reduced top padding from py-16 to py-8 */}
       <section className="min-h-[90vh] flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10"></div>
         </div>
         
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 py-16 flex flex-col lg:flex-row items-center gap-12">
+        <div className="container max-w-7xl mx-auto px-6 md:px-8 py-8 flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -132,7 +131,6 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-full animate-pulse-slow"></div>
               <div className="absolute inset-6 bg-gradient-to-bl from-primary/30 to-blue-500/20 rounded-full rotate-45 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
               
-              {/* Add a secondary ring with dashed effect */}
               <div className="absolute inset-[-10px] rounded-full border-2 border-dashed border-primary/20 animate-rotate-slow"></div>
               
               <div className="absolute inset-12 glass rounded-full z-10 animate-float overflow-hidden flex items-center justify-center group transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
@@ -143,7 +141,6 @@ export default function Home() {
                   className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105 filter group-hover:contrast-[1.1]"
                 />
                 
-                {/* Glowing effect on hover */}
                 <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
               </div>
             </div>
@@ -166,7 +163,6 @@ export default function Home() {
         </motion.div>
       </section>
       
-      {/* Skills Section */}
       <section id="skills" className="py-20 bg-muted/30">
         <div className="container max-w-7xl mx-auto px-6 md:px-8">
           <SectionHeading 
@@ -243,7 +239,6 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Featured Projects Section */}
       <section className="py-20">
         <div className="container max-w-7xl mx-auto px-6 md:px-8">
           <SectionHeading 
