@@ -5,6 +5,7 @@ import { languageColors, Repository } from "@/api/github";
 import { ArrowUpRight, Star, GitFork } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   project: Repository;
@@ -39,22 +40,33 @@ export function ProjectCard({ project, username, featured = false }: ProjectCard
   
   return (
     <Card className={cn(
-      "overflow-hidden h-full transition-all duration-300 hover:shadow-lg group",
+      "overflow-hidden h-full transition-all duration-500 hover:shadow-xl group border-opacity-30",
       featured ? "border-primary/20" : ""
     )}>
       {imageUrl && (
         <div className="relative w-full h-48 overflow-hidden">
-          <img 
-            src={imageUrl} 
-            alt={project.name} 
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-          />
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="w-full h-full"
+          >
+            <img 
+              src={imageUrl} 
+              alt={project.name} 
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
           {featured && (
-            <div className="absolute top-3 left-3">
-              <span className="bg-primary text-primary-foreground text-xs font-medium px-2.5 py-1 rounded-full">
+            <motion.div 
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="absolute top-3 left-3"
+            >
+              <span className="bg-primary text-primary-foreground text-xs font-medium px-2.5 py-1 rounded-full shadow-md">
                 Featured
               </span>
-            </div>
+            </motion.div>
           )}
         </div>
       )}
@@ -68,32 +80,45 @@ export function ProjectCard({ project, username, featured = false }: ProjectCard
       
       <CardContent className="p-4 pt-2">
         {project.language && (
-          <div className="mb-3">
+          <motion.div 
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
+            className="mb-3"
+          >
             <SkillBadge name={project.language} color={languageColor} />
-          </div>
+          </motion.div>
         )}
       </CardContent>
       
       <CardFooter className="flex justify-between items-center p-4 pt-0">
         <div className="flex items-center space-x-3">
-          <div className="flex items-center">
+          <motion.div 
+            whileHover={{ y: -2 }} 
+            className="flex items-center"
+          >
             <Star className="h-4 w-4 mr-1 text-muted-foreground" />
             <span className="text-sm text-muted-foreground">{project.stargazers_count}</span>
-          </div>
-          <div className="flex items-center">
+          </motion.div>
+          <motion.div 
+            whileHover={{ y: -2 }} 
+            className="flex items-center"
+          >
             <GitFork className="h-4 w-4 mr-1 text-muted-foreground" />
             <span className="text-sm text-muted-foreground">{project.forks_count}</span>
-          </div>
+          </motion.div>
         </div>
         
-        <a
+        <motion.a
+          whileHover={{ x: 3 }}
+          transition={{ type: "spring", stiffness: 400 }}
           href={project.html_url}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center text-sm font-medium text-primary hover:underline"
         >
           View Project <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-        </a>
+        </motion.a>
       </CardFooter>
     </Card>
   );
