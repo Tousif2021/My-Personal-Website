@@ -5,17 +5,61 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillBadge } from "@/components/SkillBadge";
-import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME } from "@/api/github";
+import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME, languageColors } from "@/api/github";
 import { ArrowRight, Github, ArrowDown, Linkedin, Rocket, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 import { motion } from "framer-motion";
+
+// Custom skills to add beyond what's fetched from GitHub
+const customSkills = [
+  { name: "React", color: "#61DAFB" },
+  { name: "Tailwind CSS", color: "#38B2AC" },
+  { name: "Node.js", color: "#68A063" },
+  { name: "Next.js", color: "#000000" },
+  { name: "Docker", color: "#2496ED" },
+  { name: "AWS", color: "#FF9900" },
+  { name: "MongoDB", color: "#47A248" },
+  { name: "GraphQL", color: "#E535AB" },
+  { name: "TensorFlow", color: "#FF6F00" },
+  { name: "PyTorch", color: "#EE4C2C" },
+  { name: "Redux", color: "#764ABC" },
+  { name: "Firebase", color: "#FFCA28" },
+];
 
 export default function Home() {
   const [featuredProjects, setFeaturedProjects] = useState<Repository[]>([]);
   const { userData, loading: userLoading } = useGitHubUser(GITHUB_USERNAME);
   const { repositories, loading: reposLoading } = useGitHubRepos(GITHUB_USERNAME);
   const languages = useLanguageStats(repositories);
+  
+  // Create a set of language names to avoid duplicates
+  const [allSkills, setAllSkills] = useState<Array<{name: string, color: string, isGithub: boolean}>>([]);
+  
+  useEffect(() => {
+    if (languages.length > 0) {
+      // Create a map of existing GitHub language names
+      const existingLanguageNames = new Set(languages.map(lang => lang.name));
+      
+      // Combine GitHub languages with custom skills, avoiding duplicates
+      const combinedSkills = [
+        ...languages.map(lang => ({ 
+          name: lang.name, 
+          color: lang.color, 
+          isGithub: true 
+        })),
+        ...customSkills
+          .filter(skill => !existingLanguageNames.has(skill.name))
+          .map(skill => ({ 
+            name: skill.name, 
+            color: skill.color, 
+            isGithub: false 
+          }))
+      ];
+      
+      setAllSkills(combinedSkills);
+    }
+  }, [languages]);
   
   const userName = userData?.name || 'Tousif Dewan';
   const { displayText, cursor } = useTypingEffect(userName, {
@@ -188,9 +232,9 @@ export default function Home() {
                   />
                 ))
               ) : (
-                languages.map((language, index) => (
+                allSkills.map((skill, index) => (
                   <motion.div
-                    key={language.name}
+                    key={`${skill.name}-${index}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -198,40 +242,14 @@ export default function Home() {
                     whileHover={{ y: -5, scale: 1.05 }}
                   >
                     <SkillBadge 
-                      name={language.name}
-                      color={language.color}
+                      name={skill.name}
+                      color={skill.color}
+                      isNew={!skill.isGithub}
                       className="text-sm hover:shadow-md transition-all duration-300"
                     />
                   </motion.div>
                 ))
               )}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.05 }}
-              >
-                <SkillBadge name="React" color="#61DAFB" className="hover:shadow-md transition-all duration-300" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.05 }}
-              >
-                <SkillBadge name="Tailwind CSS" color="#38B2AC" className="hover:shadow-md transition-all duration-300" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.05 }}
-              >
-                <SkillBadge name="Node.js" color="#68A063" className="hover:shadow-md transition-all duration-300" />
-              </motion.div>
             </motion.div>
           </div>
         </div>

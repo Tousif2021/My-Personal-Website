@@ -5,9 +5,15 @@ interface SkillBadgeProps {
   name: string;
   color?: string;
   className?: string;
+  isNew?: boolean;
 }
 
-export function SkillBadge({ name, color = "#8b949e", className }: SkillBadgeProps) {
+export function SkillBadge({ 
+  name, 
+  color = "#8b949e", 
+  className,
+  isNew = false 
+}: SkillBadgeProps) {
   // Generate contrasting text color
   const isDark = (color: string): boolean => {
     const hex = color.replace('#', '');
@@ -23,13 +29,16 @@ export function SkillBadge({ name, color = "#8b949e", className }: SkillBadgePro
   return (
     <span 
       className={cn(
-        "inline-flex items-center rounded-full px-3 py-1 text-sm font-medium",
+        "inline-flex items-center rounded-full px-3 py-1 text-sm font-medium relative",
         textColor,
         className
       )}
       style={{ backgroundColor: color }}
     >
       {name}
+      {isNew && (
+        <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-primary animate-pulse" />
+      )}
     </span>
   );
 }
