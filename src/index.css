@@ -201,7 +201,7 @@
   }
   
   .float {
-    animation: float 8s ease-in-out infinite;
+    animation: float 12s ease-in-out infinite;
   }
   
   /* Terminal-style text effect */
