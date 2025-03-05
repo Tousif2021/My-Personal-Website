@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -8,12 +7,20 @@ import { SkillBadge } from "@/components/SkillBadge";
 import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME } from "@/api/github";
 import { ArrowRight, Github, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTypingEffect } from "@/hooks/use-typing-effect";
 
 export default function Home() {
   const [featuredProjects, setFeaturedProjects] = useState<Repository[]>([]);
   const { userData, loading: userLoading } = useGitHubUser(GITHUB_USERNAME);
   const { repositories, loading: reposLoading } = useGitHubRepos(GITHUB_USERNAME);
   const languages = useLanguageStats(repositories);
+  
+  const userName = userData?.name || 'Tousif Dewan';
+  const { displayText, cursor } = useTypingEffect(userName, {
+    typingSpeed: 90,
+    delayBeforeStart: 600,
+    cursorBlinkSpeed: 500
+  });
   
   useEffect(() => {
     if (repositories.length > 0) {
@@ -36,7 +43,9 @@ export default function Home() {
           <div className="lg:w-1/2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <p className="text-primary font-mono tracking-wider mb-4">Hello, my name is</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4">
-              <span className="text-gradient">{userData?.name || 'Developer'}</span>
+              <span className="text-gradient inline-flex items-center">
+                {displayText}{cursor}
+              </span>
             </h1>
             <h2 className="text-3xl md:text-4xl font-display text-muted-foreground mb-6">
               {userData?.bio?.split(' ').slice(0, 3).join(' ') || 'Software Developer'}
@@ -116,7 +125,6 @@ export default function Home() {
                   />
                 ))
               )}
-              {/* Add additional skills that might not be in GitHub repos */}
               <SkillBadge name="React" color="#61DAFB" />
               <SkillBadge name="Tailwind CSS" color="#38B2AC" />
               <SkillBadge name="Node.js" color="#68A063" />
