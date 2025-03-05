@@ -47,7 +47,7 @@ export default function Home() {
               </span>
             </h1>
             <h2 className="text-3xl md:text-4xl font-display text-muted-foreground mb-6">
-              {userData?.bio?.split(' ').slice(0, 3).join(' ') || 'Software Developer'}
+              KTH THE ROYAL INSTITUTE OF TECHNOLOGY
             </h2>
             <p className="text-lg text-foreground/80 mb-8 max-w-xl">
               {userData?.bio || 'I build exceptional digital experiences with clean code and modern technologies. Passionate about creating intuitive and performant applications.'}
