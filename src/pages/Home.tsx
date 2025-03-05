@@ -17,14 +17,16 @@ const customSkills = [
   { name: "Tailwind CSS", color: "#38B2AC" },
   { name: "Node.js", color: "#68A063" },
   { name: "Next.js", color: "#000000" },
-  { name: "Docker", color: "#2496ED" },
-  { name: "AWS", color: "#FF9900" },
-  { name: "MongoDB", color: "#47A248" },
-  { name: "GraphQL", color: "#E535AB" },
-  { name: "TensorFlow", color: "#FF6F00" },
-  { name: "PyTorch", color: "#EE4C2C" },
-  { name: "Redux", color: "#764ABC" },
-  { name: "Firebase", color: "#FFCA28" },
+  { name: "RISC-V", color: "#A6A6A6" },
+  { name: "Cisco", color: "#1BA0D7" }
+  //{ name: "Docker", color: "#2496ED" },
+  //{ name: "AWS", color: "#FF9900" },
+  //{ name: "MongoDB", color: "#47A248" },
+  //{ name: "GraphQL", color: "#E535AB" },
+  //{ name: "TensorFlow", color: "#FF6F00" },
+  //{ name: "PyTorch", color: "#EE4C2C" },
+  //{ name: "Redux", color: "#764ABC" },
+  //{ name: "Firebase", color: "#FFCA28" },
 ];
 
 export default function Home() {
