@@ -56,21 +56,77 @@ export function ProjectCard({ project, username, featured = false }: ProjectCard
               className="w-full h-full object-cover"
             />
             
-            {/* Orbit elements */}
+            {/* Enhanced decorative elements */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {/* Primary orbit element */}
-              <div className="absolute h-12 w-12 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/30 animate-orbit" />
+              {/* Diagonal line decoration */}
+              <motion.div 
+                initial={{ opacity: 0, pathLength: 0 }}
+                animate={{ opacity: 0.6, pathLength: 1 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute top-0 right-0 w-24 h-24"
+              >
+                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <motion.path 
+                    d="M0 100L100 0" 
+                    stroke="white" 
+                    strokeWidth="1.5" 
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    className="opacity-40"
+                  />
+                  <motion.path 
+                    d="M20 100L100 20" 
+                    stroke="white" 
+                    strokeWidth="1" 
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
+                    className="opacity-30"
+                  />
+                </svg>
+              </motion.div>
               
-              {/* Secondary orbit element */}
-              <div className="absolute h-8 w-8 top-1/3 right-1/4 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/30 animate-orbit-reverse" />
+              {/* Corner geometric element */}
+              <div className="absolute top-0 left-0">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <motion.rect 
+                    x="0" 
+                    y="0" 
+                    width="30" 
+                    height="30" 
+                    fill="none" 
+                    stroke="rgba(255,255,255,0.3)" 
+                    strokeWidth="1.5"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                  />
+                </svg>
+              </div>
               
-              {/* Tertiary orbit element */}
-              <div className="absolute h-6 w-6 bottom-1/4 left-1/3 rounded-full bg-secondary/10 backdrop-blur-sm border border-secondary/30 animate-orbit" 
-                style={{ animationDelay: '-4s' }}
-              />
+              {/* Bottom right decorative dot pattern */}
+              <div className="absolute bottom-3 right-3">
+                <motion.div 
+                  className="grid grid-cols-3 gap-1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                >
+                  {[...Array(9)].map((_, i) => (
+                    <motion.div 
+                      key={i}
+                      className="w-1 h-1 bg-white rounded-full opacity-60"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.4, delay: i * 0.05 }}
+                    />
+                  ))}
+                </motion.div>
+              </div>
               
-              {/* Glowing effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/0 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-20 transition-opacity duration-700" />
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
           </motion.div>
           
