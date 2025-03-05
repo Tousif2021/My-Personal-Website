@@ -1,14 +1,16 @@
+
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle, Github, Calendar, Star, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
-import { GITHUB_USERNAME, Repository, useGitHubRepos } from "@/api/github";
+import { GITHUB_USERNAME, Repository, useGitHubRepos, useGitHubUser } from "@/api/github";
 import { format } from "date-fns";
 
 export default function About() {
   const { repositories, loading, error } = useGitHubRepos(GITHUB_USERNAME);
+  const { userData, loading: userLoading } = useGitHubUser(GITHUB_USERNAME);
   const [projectTimeline, setProjectTimeline] = useState<Repository[]>([]);
   const [showAllProjects, setShowAllProjects] = useState(false);
   
@@ -52,11 +54,18 @@ export default function About() {
               <TabsContent value="bio" className="animate-fade-in">
                 <div className="grid md:grid-cols-5 gap-8 items-start">
                   <div className="md:col-span-2">
-                    <img 
-                      src="https://via.placeholder.com/400x500" 
-                      alt="Your Name" 
-                      className="rounded-lg shadow-md w-full"
-                    />
+                    <div className="relative w-full aspect-square max-w-md mx-auto">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-full animate-pulse-slow"></div>
+                      <div className="absolute inset-6 bg-gradient-to-bl from-primary/30 to-blue-500/20 rounded-full rotate-45 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+                      <div className="absolute inset-0 glass rounded-full z-10 overflow-hidden flex items-center justify-center shadow-lg">
+                        <img 
+                          src={userData?.avatar_url || "https://via.placeholder.com/400"} 
+                          alt={userData?.name || "Developer"} 
+                          className="w-full h-full object-cover rounded-full hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
                   </div>
                   
                   <div className="md:col-span-3 space-y-4">
