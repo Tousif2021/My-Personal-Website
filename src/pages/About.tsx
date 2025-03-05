@@ -189,13 +189,21 @@ export default function About() {
                     <CardContent className="pt-6">
                       <h4 className="text-xl font-display font-semibold mb-4">User-Centered Design</h4>
                       <p>
-                        I believe that technology should serve people, not the other way around.
-                        That's why I approach every project with a focus on the end user's needs,
-                        preferences, and behaviors. A beautiful interface means nothing if it's
-                        not intuitive and accessible to the people who will use it.
+                        I believe that great software is more than just functional—it should be intuitive, efficient, and built with purpose. My approach to development is guided by a few core principles:
+1️⃣ User-Centric Design – Every line of code should contribute to a seamless and enjoyable user experience. If the end user struggles to use an application, then no amount of technical brilliance can save it.
+2️⃣ Performance & Efficiency – Speed and scalability matter. I aim to write clean, optimized code that ensures applications run smoothly, whether it's a small project or a large-scale system.
+3️⃣ Reusability & SOLID Principles – I strongly believe in writing modular, reusable functions that follow SOLID principles. A well-structured function should be easy to maintain, extend, and integrate into different parts of a project without unnecessary duplication.
+4️⃣ Recursion & Problem-Solving – Sometimes, the best solutions lie in breaking problems down into smaller, self-solving pieces. I enjoy using recursion where it makes sense, ensuring that complex problems are approached with elegance and simplicity.
+5️⃣ Avoiding Common Mistakes – Over time, I’ve learned that writing great software is as much about avoiding mistakes as it is about implementing best practices. I follow disciplined coding habits such as:
+Minimizing global variables to prevent unintended side effects and improve maintainability.
+Using meaningful variable and function names for readability.
+Writing modular functions instead of bloated, hard-to-debug code blocks.
+Testing thoroughly to catch bugs early and ensure reliability.
+6️⃣ Continuous Learning & Growth – Technology evolves rapidly, and so should we as developers. I constantly explore new tools, frameworks, and best practices to refine my skills and create even better solutions.
+For me, coding isn’t just about solving problems—it’s about crafting experiences, making lives easier, and pushing the boundaries of what’s possible.
                       </p>
                     </CardContent>
-                  </Card>
+                 /* </Card>
                   
                   <Card>
                     <CardContent className="pt-6">
@@ -231,7 +239,7 @@ export default function About() {
                         are built by teams, not individuals.
                       </p>
                     </CardContent>
-                  </Card>
+                  </Card>*/
                 </div>
               </TabsContent>
             </Tabs>
