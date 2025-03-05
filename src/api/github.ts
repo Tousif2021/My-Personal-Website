@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 export interface Repository {
@@ -55,15 +54,15 @@ export const languageColors: Record<string, string> = {
   default: '#8b949e',
 };
 
+export const GITHUB_USERNAME = 'yourusername';
+
 const cache: Record<string, any> = {};
 
 async function fetchWithCache<T>(url: string, cacheKey: string): Promise<T> {
-  // Use cache if available
   if (cache[cacheKey]) {
     return cache[cacheKey] as T;
   }
   
-  // Fetch and cache
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`GitHub API error: ${response.status}`);
@@ -113,7 +112,6 @@ export const useGitHubRepos = (username: string) => {
           `repos-${username}`
         );
         
-        // Sort by stars by default
         const sortedData = [...data].sort((a, b) => b.stargazers_count - a.stargazers_count);
         setRepositories(sortedData);
         setError(null);
@@ -163,17 +161,14 @@ export const extractImageFromReadme = async (username: string, repo: string): Pr
       `readme-${username}-${repo}`
     );
     
-    // Decode base64 README content
     const content = atob(readme.content);
     
-    // Regular expression to find image links in markdown
     const imageRegex = /!\[.*?\]\((.*?)\)/;
     const match = content.match(imageRegex);
     
     if (match && match[1]) {
       let imagePath = match[1];
       
-      // If it's a relative path, convert to absolute URL
       if (!imagePath.startsWith('http')) {
         imagePath = `https://raw.githubusercontent.com/${username}/${repo}/main/${imagePath}`;
       }

@@ -5,11 +5,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillBadge } from "@/components/SkillBadge";
-import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository } from "@/api/github";
+import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME } from "@/api/github";
 import { ArrowRight, Github, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const GITHUB_USERNAME = 'yourusername'; // Replace with your GitHub username
 
 export default function Home() {
   const [featuredProjects, setFeaturedProjects] = useState<Repository[]>([]);
@@ -38,14 +36,13 @@ export default function Home() {
           <div className="lg:w-1/2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <p className="text-primary font-mono tracking-wider mb-4">Hello, my name is</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4">
-              <span className="text-gradient">Your Name</span>
+              <span className="text-gradient">{userData?.name || 'Developer'}</span>
             </h1>
             <h2 className="text-3xl md:text-4xl font-display text-muted-foreground mb-6">
-              Software Developer
+              {userData?.bio?.split(' ').slice(0, 3).join(' ') || 'Software Developer'}
             </h2>
             <p className="text-lg text-foreground/80 mb-8 max-w-xl">
-              I build exceptional digital experiences with clean code and modern technologies.
-              Passionate about creating intuitive and performant applications.
+              {userData?.bio || 'I build exceptional digital experiences with clean code and modern technologies. Passionate about creating intuitive and performant applications.'}
             </p>
             
             <div className="flex flex-wrap gap-4">
@@ -55,7 +52,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" /> GitHub Profile
                 </a>
               </Button>
@@ -68,8 +65,8 @@ export default function Home() {
               <div className="absolute inset-6 bg-gradient-to-bl from-primary/30 to-blue-500/20 rounded-full rotate-45 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
               <div className="absolute inset-12 glass rounded-full z-10 animate-float overflow-hidden flex items-center justify-center">
                 <img 
-                  src="https://via.placeholder.com/300?text=Profile" 
-                  alt="Your Name"
+                  src={userData?.avatar_url || "https://via.placeholder.com/300?text=Profile"} 
+                  alt={userData?.name || "Developer"}
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>
@@ -96,8 +93,7 @@ export default function Home() {
             subheading="What I work with"
           >
             <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">
-              I've worked with a variety of technologies in the web development world.
-              From backend to frontend, I enjoy bringing ideas to life with code.
+              {userData?.bio || "I've worked with a variety of technologies in the web development world. From backend to frontend, I enjoy bringing ideas to life with code."}
             </p>
           </SectionHeading>
           

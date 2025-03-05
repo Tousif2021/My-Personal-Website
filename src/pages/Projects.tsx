@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProjectCard } from "@/components/ProjectCard";
-import { useGitHubRepos, useLanguageStats, Repository } from "@/api/github";
+import { useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME } from "@/api/github";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-
-const GITHUB_USERNAME = 'yourusername'; // Replace with your GitHub username
 
 export default function Projects() {
   const { repositories, loading } = useGitHubRepos(GITHUB_USERNAME);
