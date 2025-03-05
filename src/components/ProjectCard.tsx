@@ -48,14 +48,32 @@ export function ProjectCard({ project, username, featured = false }: ProjectCard
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="w-full h-full"
+            className="w-full h-full relative"
           >
             <img 
               src={imageUrl} 
               alt={project.name} 
               className="w-full h-full object-cover"
             />
+            
+            {/* Orbit elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {/* Primary orbit element */}
+              <div className="absolute h-12 w-12 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/30 animate-orbit" />
+              
+              {/* Secondary orbit element */}
+              <div className="absolute h-8 w-8 top-1/3 right-1/4 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/30 animate-orbit-reverse" />
+              
+              {/* Tertiary orbit element */}
+              <div className="absolute h-6 w-6 bottom-1/4 left-1/3 rounded-full bg-secondary/10 backdrop-blur-sm border border-secondary/30 animate-orbit" 
+                style={{ animationDelay: '-4s' }}
+              />
+              
+              {/* Glowing effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/0 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-20 transition-opacity duration-700" />
+            </div>
           </motion.div>
+          
           {featured && (
             <motion.div 
               initial={{ x: -50, opacity: 0 }}

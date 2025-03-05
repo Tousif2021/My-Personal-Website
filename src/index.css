@@ -171,6 +171,26 @@
   .animate-stagger-3 {
     animation-delay: 0.3s;
   }
+  
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::before {
+    @apply absolute top-0 -left-[100%] w-[50%] h-full;
+    content: '';
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+  }
+  
+  .orbit-container {
+    @apply relative overflow-hidden;
+  }
+  
+  .orbit-element {
+    @apply absolute rounded-full pointer-events-none;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  }
 }
 
 /* Page transitions */
