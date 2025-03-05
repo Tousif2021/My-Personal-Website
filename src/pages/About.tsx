@@ -87,7 +87,7 @@ export default function About() {
                     
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {["JavaScript/TypeScript", "React.js", "Node.js", "HTML/CSS", 
-                        "Git/GitHub", "Responsive Design", "RESTful APIs", "Performance Optimization","C","ASSEMBLY","RISC V MCU","Sustainable Development and Ergonomics"].map((skill) => (
+                        "Git/GitHub", "Responsive Design", "RESTful APIs", "Performance Optimization","C","ASSEMBLY","RISC V MCU","Sustainable Development","Ergonomics"].map((skill) => (
                         <li key={skill} className="flex items-center">
                           <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                           <span>{skill}</span>
