@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -5,9 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillBadge } from "@/components/SkillBadge";
 import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME } from "@/api/github";
-import { ArrowRight, Github, ArrowDown, Linkedin } from "lucide-react";
+import { ArrowRight, Github, ArrowDown, Linkedin, Rocket, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [featuredProjects, setFeaturedProjects] = useState<Repository[]>([]);
@@ -19,6 +21,18 @@ export default function Home() {
   const { displayText, cursor } = useTypingEffect(userName, {
     typingSpeed: 90,
     delayBeforeStart: 600,
+    cursorBlinkSpeed: 500
+  });
+
+  const bioParts = [
+    "CSE Major @ KTH",
+    "Building AI-driven solutions",
+    "Passionate about innovation & telecom R&D"
+  ];
+  
+  const { displayText: bioText, cursor: bioCursor } = useTypingEffect(bioParts.join(" | "), {
+    typingSpeed: 50,
+    delayBeforeStart: 1500,
     cursorBlinkSpeed: 500
   });
   
@@ -40,62 +54,116 @@ export default function Home() {
         
         <div className="container max-w-7xl mx-auto px-6 md:px-8 py-16 flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="text-primary font-mono tracking-wider mb-4">Hello, my name is</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4">
-              <span className="text-gradient inline-flex items-center">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-primary font-mono tracking-wider mb-4"
+            >
+              Hello, my name is
+            </motion.p>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4"
+            >
+              <span className="bg-gradient-to-r from-[#8B5CF6] to-[#0EA5E9] bg-clip-text text-transparent hover:from-[#0EA5E9] hover:to-[#8B5CF6] transition-all duration-500 inline-flex items-center shadow-sm">
                 {displayText}{cursor}
               </span>
-            </h1>
-            <h2 className="text-3xl md:text-4xl font-display text-muted-foreground mb-6">
-              KTH THE ROYAL INSTITUTE OF TECHNOLOGY
-            </h2>
-            <p className="text-lg text-foreground/80 mb-8 max-w-xl">
-              {userData?.bio || 'I build exceptional digital experiences with clean code and modern technologies. Passionate about creating intuitive and performant applications.'}
-            </p>
+            </motion.h1>
             
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg">
-                <Link to="/projects">
-                  View Projects <ArrowRight className="ml-2 h-4 w-4" />
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-2xl md:text-3xl font-display text-muted-foreground mb-6"
+            >
+              KTH THE ROYAL INSTITUTE OF TECHNOLOGY
+            </motion.h2>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-lg text-foreground/80 mb-8 max-w-xl font-medium"
+            >
+              <span className="font-mono text-foreground/90">{bioText}{bioCursor}</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Button asChild size="lg" className="group transition-all duration-300">
+                <Link to="/projects" className="group">
+                  <Rocket className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:rotate-12" /> 
+                  View Projects 
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" /> GitHub Profile
+              <Button variant="outline" size="lg" asChild className="border-primary/20 hover:border-primary/40 transition-all duration-300">
+                <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer" className="group">
+                  <Github className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:scale-110" /> 
+                  GitHub Profile
+                  <ExternalLink className="ml-2 h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-[-2px]" />
                 </a>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="www.linkedin.com/in/tousifdewan" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+              <Button variant="outline" size="lg" asChild className="border-primary/20 hover:border-primary/40 transition-all duration-300">
+                <a href="https://www.linkedin.com/in/tousifdewan" target="_blank" rel="noopener noreferrer" className="group">
+                  <Linkedin className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:scale-110" /> 
+                  LinkedIn
+                  <ExternalLink className="ml-2 h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-[-2px]" />
                 </a>
               </Button>
-            </div>
+            </motion.div>
           </div>
           
-          <div className="lg:w-1/2 relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="lg:w-1/2 relative"
+          >
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-full animate-pulse-slow"></div>
               <div className="absolute inset-6 bg-gradient-to-bl from-primary/30 to-blue-500/20 rounded-full rotate-45 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute inset-12 glass rounded-full z-10 animate-float overflow-hidden flex items-center justify-center">
+              
+              {/* Add a secondary ring with dashed effect */}
+              <div className="absolute inset-[-10px] rounded-full border-2 border-dashed border-primary/20 animate-rotate-slow"></div>
+              
+              <div className="absolute inset-12 glass rounded-full z-10 animate-float overflow-hidden flex items-center justify-center group transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <img 
                   src={userData?.avatar_url || "https://via.placeholder.com/300?text=Profile"} 
                   alt={userData?.name || "Developer"}
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105 filter group-hover:contrast-[1.1]"
                 />
+                
+                {/* Glowing effect on hover */}
+                <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
         
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+          className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce"
+        >
           <button
             onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-foreground/60 hover:text-foreground transition-colors"
+            className="text-foreground/60 hover:text-foreground transition-colors group"
             aria-label="Scroll down"
           >
-            <ArrowDown className="h-6 w-6" />
+            <ArrowDown className="h-6 w-6 transition-transform duration-300 group-hover:translate-y-1" />
           </button>
-        </div>
+        </motion.div>
       </section>
       
       {/* Skills Section */}
@@ -111,7 +179,13 @@ export default function Home() {
           </SectionHeading>
           
           <div className="mt-12">
-            <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, staggerChildren: 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto"
+            >
               {isLoading ? (
                 Array.from({ length: 8 }).map((_, index) => (
                   <div 
@@ -120,19 +194,51 @@ export default function Home() {
                   />
                 ))
               ) : (
-                languages.map((language) => (
-                  <SkillBadge 
+                languages.map((language, index) => (
+                  <motion.div
                     key={language.name}
-                    name={language.name}
-                    color={language.color}
-                    className="text-sm"
-                  />
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                  >
+                    <SkillBadge 
+                      name={language.name}
+                      color={language.color}
+                      className="text-sm hover:shadow-md transition-all duration-300"
+                    />
+                  </motion.div>
                 ))
               )}
-              <SkillBadge name="React" color="#61DAFB" />
-              <SkillBadge name="Tailwind CSS" color="#38B2AC" />
-              <SkillBadge name="Node.js" color="#68A063" />
-            </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.05 }}
+              >
+                <SkillBadge name="React" color="#61DAFB" className="hover:shadow-md transition-all duration-300" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.05 }}
+              >
+                <SkillBadge name="Tailwind CSS" color="#38B2AC" className="hover:shadow-md transition-all duration-300" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.05 }}
+              >
+                <SkillBadge name="Node.js" color="#68A063" className="hover:shadow-md transition-all duration-300" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -158,24 +264,38 @@ export default function Home() {
                 />
               ))
             ) : (
-              featuredProjects.map((project) => (
-                <ProjectCard
+              featuredProjects.map((project, index) => (
+                <motion.div
                   key={project.id}
-                  project={project}
-                  username={GITHUB_USERNAME}
-                  featured={true}
-                />
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <ProjectCard
+                    project={project}
+                    username={GITHUB_USERNAME}
+                    featured={true}
+                  />
+                </motion.div>
               ))
             )}
           </div>
           
-          <div className="mt-12 text-center">
-            <Button asChild size="lg">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
+            <Button asChild size="lg" className="group">
               <Link to="/projects">
-                View All Projects <ArrowRight className="ml-2 h-4 w-4" />
+                View All Projects 
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </PageTransition>

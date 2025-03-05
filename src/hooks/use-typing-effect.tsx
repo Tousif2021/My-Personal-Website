@@ -1,9 +1,15 @@
 
 import { useState, useEffect } from 'react';
 
+interface TypingEffectOptions {
+  typingSpeed: number;
+  delayBeforeStart: number;
+  cursorBlinkSpeed: number;
+}
+
 export function useTypingEffect(
   text: string,
-  options = {
+  options: TypingEffectOptions = {
     typingSpeed: 100,
     delayBeforeStart: 500,
     cursorBlinkSpeed: 400
@@ -16,7 +22,19 @@ export function useTypingEffect(
 
   // Handle the typing animation
   useEffect(() => {
-    if (currentIndex < text.length) {
+    if (currentIndex === 0) {
+      // Initial delay before typing starts
+      const initialDelay = setTimeout(() => {
+        if (text.length > 0) {
+          setDisplayText(text.substring(0, 1));
+          setCurrentIndex(1);
+        } else {
+          setIsComplete(true);
+        }
+      }, options.delayBeforeStart);
+      
+      return () => clearTimeout(initialDelay);
+    } else if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setDisplayText(text.substring(0, currentIndex + 1));
         setCurrentIndex(prevIndex => prevIndex + 1);
@@ -26,27 +44,16 @@ export function useTypingEffect(
     } else if (!isComplete) {
       setIsComplete(true);
     }
-  }, [currentIndex, text, options.typingSpeed, isComplete]);
-
-  // Initial delay before typing starts
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      // Start typing after initial delay
-    }, options.delayBeforeStart);
-
-    return () => clearTimeout(timeout);
-  }, [options.delayBeforeStart]);
+  }, [currentIndex, text, options.typingSpeed, isComplete, options.delayBeforeStart]);
 
   // Cursor blinking effect
   useEffect(() => {
     const blinkInterval = setInterval(() => {
-      if (isComplete) {
-        setShowCursor(prev => !prev);
-      }
+      setShowCursor(prev => !prev);
     }, options.cursorBlinkSpeed);
 
     return () => clearInterval(blinkInterval);
-  }, [isComplete, options.cursorBlinkSpeed]);
+  }, [options.cursorBlinkSpeed]);
 
   return { 
     displayText, 
