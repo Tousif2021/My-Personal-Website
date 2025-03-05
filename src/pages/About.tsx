@@ -3,35 +3,25 @@ import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Github, Calendar, Star } from "lucide-react";
+import { useEffect, useState } from "react";
+import { GITHUB_USERNAME, Repository, useGitHubRepos } from "@/api/github";
+import { format } from "date-fns";
 
 export default function About() {
-  const timelineEvents = [
-    {
-      year: "2023",
-      title: "Senior Developer",
-      company: "Tech Innovations Inc.",
-      description: "Leading a team of developers on various projects using React, Node.js, and cloud technologies."
-    },
-    {
-      year: "2021",
-      title: "Frontend Developer",
-      company: "Creative Solutions Ltd.",
-      description: "Built responsive web applications and implemented new features for client projects."
-    },
-    {
-      year: "2020",
-      title: "Web Development Bootcamp",
-      company: "Code Academy",
-      description: "Intensive training in modern web development technologies and practices."
-    },
-    {
-      year: "2018",
-      title: "Computer Science Degree",
-      company: "Tech University",
-      description: "Graduated with honors with focus on software development and algorithms."
+  const { repositories, loading, error } = useGitHubRepos(GITHUB_USERNAME);
+  const [projectTimeline, setProjectTimeline] = useState<Repository[]>([]);
+  
+  useEffect(() => {
+    if (repositories.length > 0) {
+      // Sort repositories by created_at date
+      const sortedRepos = [...repositories].sort((a, b) => 
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+      // Take the most recent 6 repositories for the timeline
+      setProjectTimeline(sortedRepos.slice(0, 6));
     }
-  ];
+  }, [repositories]);
 
   return (
     <PageTransition>
@@ -50,7 +40,7 @@ export default function About() {
             <Tabs defaultValue="bio" className="w-full">
               <TabsList className="grid w-full grid-cols-3 mb-12">
                 <TabsTrigger value="bio">Biography</TabsTrigger>
-                <TabsTrigger value="journey">Journey</TabsTrigger>
+                <TabsTrigger value="journey">Project Journey</TabsTrigger>
                 <TabsTrigger value="philosophy">Philosophy</TabsTrigger>
               </TabsList>
               
@@ -102,23 +92,62 @@ export default function About() {
               </TabsContent>
               
               <TabsContent value="journey" className="animate-fade-in">
-                <h3 className="text-2xl font-display font-semibold mb-8 text-center">My Professional Journey</h3>
+                <h3 className="text-2xl font-display font-semibold mb-8 text-center">My GitHub Project Journey</h3>
                 
-                <div className="relative border-l-2 border-primary/30 ml-4 md:ml-6 pl-8 pb-8 space-y-12">
-                  {timelineEvents.map((event, index) => (
-                    <div key={index} className="relative">
-                      <div className="absolute -left-10 w-6 h-6 bg-primary/20 border-2 border-primary rounded-full"></div>
-                      <div className="flex items-baseline">
-                        <span className="text-primary font-mono text-sm mr-3">{event.year}</span>
-                        <h4 className="text-xl font-display font-semibold">{event.title}</h4>
+                {loading ? (
+                  <div className="flex justify-center items-center py-20">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                  </div>
+                ) : error ? (
+                  <div className="text-center text-destructive py-10">
+                    <p>Failed to load GitHub projects. Please try again later.</p>
+                  </div>
+                ) : (
+                  <div className="relative border-l-2 border-primary/30 ml-4 md:ml-6 pl-8 pb-8 space-y-12">
+                    {projectTimeline.map((project, index) => (
+                      <div key={project.id} className="relative">
+                        <div className="absolute -left-10 w-6 h-6 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center">
+                          <Github className="h-3 w-3 text-primary" />
+                        </div>
+                        <div className="flex items-baseline">
+                          <span className="text-primary font-mono text-sm mr-3">
+                            {format(new Date(project.created_at), "MMM yyyy")}
+                          </span>
+                          <h4 className="text-xl font-display font-semibold">{project.name}</h4>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                          <Calendar className="h-3.5 w-3.5" />
+                          <span>Last updated: {format(new Date(project.updated_at), "dd MMM yyyy")}</span>
+                          {project.stargazers_count > 0 && (
+                            <span className="flex items-center ml-2">
+                              <Star className="h-3.5 w-3.5 mr-1" /> {project.stargazers_count}
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-2">{project.description || "No description available"}</p>
+                        {project.language && (
+                          <div className="mt-2">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                              {project.language}
+                            </span>
+                          </div>
+                        )}
+                        <a 
+                          href={project.html_url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-block mt-2 text-sm font-medium text-primary hover:underline"
+                        >
+                          View Project →
+                        </a>
                       </div>
-                      <p className="text-muted-foreground mt-1">{event.company}</p>
-                      <p className="mt-2">{event.description}</p>
+                    ))}
+                    
+                    <div className="absolute -left-[10px] bottom-0 w-6 h-6 bg-primary border-2 border-primary rounded-full flex items-center justify-center">
+                      <Github className="h-3 w-3 text-primary-foreground" />
                     </div>
-                  ))}
-                  
-                  <div className="absolute -left-[10px] bottom-0 w-6 h-6 bg-primary border-2 border-primary rounded-full"></div>
-                </div>
+                  </div>
+                )}
               </TabsContent>
               
               <TabsContent value="philosophy" className="animate-fade-in">
