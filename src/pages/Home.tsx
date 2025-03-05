@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillBadge } from "@/components/SkillBadge";
 import { useGitHubUser, useGitHubRepos, useLanguageStats, Repository, GITHUB_USERNAME } from "@/api/github";
-import { ArrowRight, Github, ArrowDown } from "lucide-react";
+import { ArrowRight, Github, ArrowDown, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 
@@ -24,7 +24,6 @@ export default function Home() {
   
   useEffect(() => {
     if (repositories.length > 0) {
-      // Get top 3 repositories by stars
       setFeaturedProjects(repositories.slice(0, 3));
     }
   }, [repositories]);
@@ -63,6 +62,11 @@ export default function Home() {
               <Button variant="outline" size="lg" asChild>
                 <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" /> GitHub Profile
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://linkedin.com/in/tousif-dewan" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
                 </a>
               </Button>
             </div>
