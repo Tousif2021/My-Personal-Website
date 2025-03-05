@@ -44,9 +44,22 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link 
           to="/" 
-          className="text-xl font-display font-semibold tracking-tight relative z-10 flex items-center"
+          className="relative z-10 flex items-center"
         >
-          <span className="text-gradient">Portfolio</span>
+          <div className="font-mono font-semibold tracking-tighter relative overflow-hidden group">
+            <div className="flex items-center space-x-1 bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent hover:from-blue-500 hover:to-primary transition-all duration-500">
+              <span className="text-primary">&lt;</span>
+              <div className="relative">
+                <span className="text-lg md:text-xl">Commit.Push.Build</span>
+                <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100"></div>
+              </div>
+              <span className="text-primary">/&gt;</span>
+            </div>
+            <div className="text-xs text-muted-foreground mt-0.5 pl-6">
+              DevLog by Tousif Dewan
+              <span className="inline-block w-1.5 h-3 bg-primary/80 ml-1 animate-pulse"></span>
+            </div>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
