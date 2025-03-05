@@ -72,22 +72,15 @@ export default function About() {
                     <h3 className="text-2xl font-display font-semibold mb-4">Hello There!</h3>
                     
                     <p>
-                      I'm a passionate software developer with a deep interest in creating efficient, 
-                      user-friendly applications. My journey in technology began with a 
-                      curiosity about how digital products work and evolved into a professional 
-                      career building them.
+                      Hey there! I'm a passionate software developer who loves turning ideas into reality through code. My journey into tech started with pure curiosity—wondering how digital products worked—and quickly turned into a full-blown obsession with building them myself.
                     </p>
                     
                     <p>
-                      With experience in both frontend and backend development, I enjoy working 
-                      across the full stack to deliver complete solutions. I'm particularly 
-                      interested in user experience design and performance optimization.
+                      I thrive in both frontend and backend development, crafting smooth, user-friendly experiences while ensuring everything runs efficiently under the hood. Performance optimization and user experience design are my sweet spots—I love making applications that not only work well but feel great to use.
                     </p>
                     
                     <p>
-                      When I'm not coding, you can find me exploring new technologies, contributing 
-                      to open-source projects, or sharing knowledge with the developer community.
-                      I also enjoy hiking, photography, and a good cup of coffee.
+                      Beyond coding, you'll often find me exploring new technologies, diving into open-source projects, or sharing what I’ve learned with the developer community. When I step away from the screen, I’m probably out on a hike, capturing moments through my camera lens, or enjoying a perfectly brewed cup of coffee.
                     </p>
                     
                     <h4 className="text-xl font-display font-semibold mt-6 mb-3">Core Skills</h4>
