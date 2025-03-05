@@ -54,7 +54,7 @@ export const languageColors: Record<string, string> = {
   default: '#8b949e',
 };
 
-export const GITHUB_USERNAME = 'yourusername';
+export const GITHUB_USERNAME = 'Tousif2021';
 
 const cache: Record<string, any> = {};
 
