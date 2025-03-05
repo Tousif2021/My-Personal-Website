@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -68,7 +69,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4"
             >
-              <span className="bg-gradient-to-r from-[#8B5CF6] to-[#0EA5E9] bg-clip-text text-transparent hover:from-[#0EA5E9] hover:to-[#8B5CF6] transition-all duration-500 inline-flex items-center shadow-sm">
+              <span className="text-foreground hover:text-primary transition-all duration-500 inline-flex items-center">
                 {displayText}{cursor}
               </span>
             </motion.h1>

@@ -50,7 +50,7 @@ export function Navbar() {
             <div className="flex items-center space-x-1">
               <span className="text-primary font-bold text-2xl">&lt;</span>
               <div className="relative">
-                <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#8B5CF6] to-[#0EA5E9] bg-clip-text text-transparent hover:from-[#0EA5E9] hover:to-[#8B5CF6] transition-all duration-500 terminal-glitch" data-text="Commit.Push.Build">
+                <span className="text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-all duration-500 terminal-glitch" data-text="Commit.Push.Build">
                   Commit.Push.Build
                 </span>
                 <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100"></div>
