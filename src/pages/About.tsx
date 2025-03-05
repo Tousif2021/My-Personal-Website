@@ -188,22 +188,61 @@ export default function About() {
                   <Card>
                     <CardContent className="pt-6">
                       <h4 className="text-xl font-display font-semibold mb-4">User-Centered Design</h4>
-                      <p>
-                        I believe that great software is more than just functional—it should be intuitive, efficient, and built with purpose. My approach to development is guided by a few core principles:
-                        
-                    1️⃣ User-Centric Design – Every line of code should contribute to a seamless and enjoyable user experience. If the end user struggles to use an application, then no amount of technical brilliance can save it.
-                    2️⃣ Performance & Efficiency – Speed and scalability matter. I aim to write clean, optimized code that ensures applications run smoothly, whether it's a small project or a large-scale system.
-                    3️⃣ Reusability & SOLID Principles – I strongly believe in writing modular, reusable functions that follow SOLID principles. A well-structured function should be easy to maintain, extend, and integrate into different parts of a project without unnecessary duplication.
-                    4️⃣ Recursion & Problem-Solving – Sometimes, the best solutions lie in breaking problems down into smaller, self-solving pieces. I enjoy using recursion where it makes sense, ensuring that complex problems are approached with elegance and simplicity.
-                    5️⃣ Avoiding Common Mistakes – Over time, I’ve learned that writing great software is as much about avoiding mistakes as it is about implementing best practices. I follow disciplined coding habits such as:
-                        Minimizing global variables to prevent unintended side effects and improve maintainability.
-                        Using meaningful variable and function names for readability.
-                        Writing modular functions instead of bloated, hard-to-debug code blocks.
-                        Testing thoroughly to catch bugs early and ensure reliability.
-                    6️⃣ Continuous Learning & Growth – Technology evolves rapidly, and so should we as developers. I constantly explore new tools, frameworks, and best practices to refine my skills and create even better solutions.
-                        
-                        For me, coding isn’t just about solving problems—it’s about crafting experiences, making lives easier, and pushing the boundaries of what’s possible.
-                      </p>
+                      <section>
+    
+    <p>
+        I believe that great software is more than just functional—it should be intuitive, efficient, and built with purpose. 
+        My approach to development is guided by a few core principles:
+    </p>
+
+    <h3>1️⃣ User-Centric Design</h3>
+    <p>
+        Every line of code should contribute to a seamless and enjoyable user experience. If the end user struggles to use an 
+        application, then no amount of technical brilliance can save it.
+    </p>
+
+    <h3>2️⃣ Performance & Efficiency</h3>
+    <p>
+        Speed and scalability matter. I aim to write clean, optimized code that ensures applications run smoothly, 
+        whether it's a small project or a large-scale system.
+    </p>
+
+    <h3>3️⃣ Reusability & SOLID Principles</h3>
+    <p>
+        I strongly believe in writing modular, reusable functions that follow SOLID principles. A well-structured function 
+        should be easy to maintain, extend, and integrate into different parts of a project without unnecessary duplication.
+    </p>
+
+    <h3>4️⃣ Recursion & Problem-Solving</h3>
+    <p>
+        Sometimes, the best solutions lie in breaking problems down into smaller, self-solving pieces. 
+        I enjoy using recursion where it makes sense, ensuring that complex problems are approached with elegance and simplicity.
+    </p>
+
+    <h3>5️⃣ Avoiding Common Mistakes</h3>
+    <p>
+        Over time, I’ve learned that writing great software is as much about avoiding mistakes as it is about implementing best practices. 
+        I follow disciplined coding habits such as:
+    </p>
+    <ul>
+        <li>Minimizing global variables to prevent unintended side effects and improve maintainability.</li>
+        <li>Using meaningful variable and function names for readability.</li>
+        <li>Writing modular functions instead of bloated, hard-to-debug code blocks.</li>
+        <li>Testing thoroughly to catch bugs early and ensure reliability.</li>
+    </ul>
+
+    <h3>6️⃣ Continuous Learning & Growth</h3>
+    <p>
+        Technology evolves rapidly, and so should we as developers. I constantly explore new tools, frameworks, and best 
+        practices to refine my skills and create even better solutions.
+    </p>
+
+    <p>
+        For me, coding isn’t just about solving problems—it’s about crafting experiences, making lives easier, 
+        and pushing the boundaries of what’s possible.
+    </p>
+</section>
+
                     </CardContent>
                   
                 </div>
