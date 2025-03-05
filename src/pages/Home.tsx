@@ -169,10 +169,7 @@ export default function Home() {
           <SectionHeading 
             heading="Skills & Technologies"
             subheading="What I work with"
-          >
-            <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">
-              {userData?.bio || "I've worked with a variety of technologies in the web development world. From backend to frontend, I enjoy bringing ideas to life with code."}
-            </p>
+          > 
           </SectionHeading>
           
           <div className="mt-12">
