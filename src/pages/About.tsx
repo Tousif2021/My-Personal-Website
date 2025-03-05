@@ -1,4 +1,3 @@
-
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
@@ -138,18 +137,6 @@ export default function About() {
                             )}
                           </div>
                           <p className="mt-2">{project.description || "No description available"}</p>
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            {project.language && (
-                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
-                                {project.language}
-                              </span>
-                            )}
-                            {project.topics && project.topics.slice(0, 3).map(topic => (
-                              <span key={topic} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary/20 text-secondary-foreground">
-                                {topic}
-                              </span>
-                            ))}
-                          </div>
                           <div className="mt-3">
                             <a 
                               href={project.html_url} 
