@@ -81,10 +81,10 @@ export default function Contact() {
                     <div>
                       <h4 className="font-medium">Email</h4>
                       <a 
-                        href="mailto:your.email@example.com" 
+                        href="mailto:tsdewan@kth.se" 
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        your.email@example.com
+                        tsdewan@kth.se
                       </a>
                     </div>
                   </CardContent>
@@ -96,12 +96,12 @@ export default function Contact() {
                     <div>
                       <h4 className="font-medium">GitHub</h4>
                       <a 
-                        href="https://github.com/yourusername" 
+                        href="https://github.com/Tousif2021" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        github.com/yourusername
+                        https://github.com/Tousif2021
                       </a>
                     </div>
                   </CardContent>
@@ -113,12 +113,12 @@ export default function Contact() {
                     <div>
                       <h4 className="font-medium">LinkedIn</h4>
                       <a 
-                        href="https://linkedin.com/in/yourusername" 
+                        href="https://linkedin.com/in/tousifdewan" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        linkedin.com/in/yourusername
+                        https://linkedin.com/in/tousifdewan
                       </a>
                     </div>
                   </CardContent>
