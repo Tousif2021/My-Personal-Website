@@ -47,17 +47,17 @@ export function Navbar() {
           className="relative z-10 flex items-center"
         >
           <div className="font-mono font-semibold tracking-tighter relative overflow-hidden group">
-            <div className="flex items-center space-x-1 bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent hover:from-blue-500 hover:to-primary transition-all duration-500">
-              <span className="text-primary">&lt;</span>
+            <div className="flex items-center space-x-1">
+              <span className="text-primary font-bold text-xl">&lt;</span>
               <div className="relative">
-                <span className="text-lg md:text-xl">Commit.Push.Build</span>
+                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-[#8B5CF6] to-[#0EA5E9] bg-clip-text text-transparent hover:from-[#0EA5E9] hover:to-[#8B5CF6] transition-all duration-500">Commit.Push.Build</span>
                 <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100"></div>
               </div>
-              <span className="text-primary">/&gt;</span>
+              <span className="text-primary font-bold text-xl">/&gt;</span>
             </div>
-            <div className="text-xs text-muted-foreground mt-0.5 pl-6">
+            <div className="text-xs text-foreground font-medium mt-0.5 pl-6">
               DevLog by Tousif Dewan
-              <span className="inline-block w-1.5 h-3 bg-primary/80 ml-1 animate-pulse"></span>
+              <span className="inline-block w-1.5 h-3 bg-[#8B5CF6] ml-1 animate-pulse"></span>
             </div>
           </div>
         </Link>
