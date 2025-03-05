@@ -28,32 +28,56 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+    () => {
+      try {
+        // Safely access localStorage
+        const storedTheme = localStorage.getItem(storageKey);
+        return (storedTheme as Theme) || defaultTheme;
+      } catch (error) {
+        console.error("Error accessing localStorage:", error);
+        return defaultTheme;
+      }
+    }
   );
 
+  // Handle system theme changes
   useEffect(() => {
     const root = window.document.documentElement;
     
+    // Clean up any existing theme classes
     root.classList.remove('light', 'dark');
     
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light';
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = () => {
+        const systemTheme = mediaQuery.matches ? 'dark' : 'light';
+        root.classList.add(systemTheme);
+      };
       
-      root.classList.add(systemTheme);
-      return;
+      // Apply initial value
+      handleChange();
+      
+      // Listen for changes
+      mediaQuery.addEventListener('change', handleChange);
+      
+      // Clean up
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    } else {
+      // Apply theme
+      root.classList.add(theme);
     }
-    
-    root.classList.add(theme);
   }, [theme]);
 
+  // Safe localStorage update
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+    setTheme: (newTheme: Theme) => {
+      try {
+        localStorage.setItem(storageKey, newTheme);
+      } catch (error) {
+        console.error("Error writing to localStorage:", error);
+      }
+      setTheme(newTheme);
     },
   };
 

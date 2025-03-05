@@ -8,26 +8,30 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch
+  // Ensure component is mounted before rendering to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return <div className="w-9 h-9"></div>;
-  }
-
+  // Improved visibility and reliability for the toggle
   return (
     <Button
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="rounded-full w-9 h-9 transition-all duration-300 ease-in-out"
+      className="relative rounded-full w-9 h-9 flex items-center justify-center hover:bg-muted/60 transition-colors"
+      aria-label="Toggle theme"
+      disabled={!mounted} // Disable button until mounted to prevent interaction issues
     >
-      {theme === "light" ? (
-        <Moon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      ) : (
-        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      {mounted && (
+        <>
+          <Sun className={`h-[1.2rem] w-[1.2rem] absolute transition-all duration-300 ${
+            theme === 'light' ? 'opacity-100 transform-none' : 'opacity-0 rotate-90 scale-0'
+          }`} />
+          <Moon className={`h-[1.2rem] w-[1.2rem] absolute transition-all duration-300 ${
+            theme === 'dark' ? 'opacity-100 transform-none' : 'opacity-0 -rotate-90 scale-0'
+          }`} />
+        </>
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>
