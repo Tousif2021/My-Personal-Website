@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -11,7 +10,6 @@ import { Link } from "react-router-dom";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 import { motion } from "framer-motion";
 
-// Custom skills to add beyond what's fetched from GitHub
 const customSkills = [
   { name: "React", color: "#61DAFB" },
   { name: "Tailwind CSS", color: "#38B2AC" },
@@ -19,14 +17,6 @@ const customSkills = [
   { name: "Next.js", color: "#000000" },
   { name: "RISC-V", color: "#A6A6A6" },
   { name: "Cisco", color: "#1BA0D7" }
-  //{ name: "Docker", color: "#2496ED" },
-  //{ name: "AWS", color: "#FF9900" },
-  //{ name: "MongoDB", color: "#47A248" },
-  //{ name: "GraphQL", color: "#E535AB" },
-  //{ name: "TensorFlow", color: "#FF6F00" },
-  //{ name: "PyTorch", color: "#EE4C2C" },
-  //{ name: "Redux", color: "#764ABC" },
-  //{ name: "Firebase", color: "#FFCA28" },
 ];
 
 export default function Home() {
@@ -35,15 +25,12 @@ export default function Home() {
   const { repositories, loading: reposLoading } = useGitHubRepos(GITHUB_USERNAME);
   const languages = useLanguageStats(repositories);
   
-  // Create a set of language names to avoid duplicates
   const [allSkills, setAllSkills] = useState<Array<{name: string, color: string, isGithub: boolean}>>([]);
   
   useEffect(() => {
     if (languages.length > 0) {
-      // Create a map of existing GitHub language names
       const existingLanguageNames = new Set(languages.map(lang => lang.name));
       
-      // Combine GitHub languages with custom skills, avoiding duplicates
       const combinedSkills = [
         ...languages.map(lang => ({ 
           name: lang.name, 
@@ -92,7 +79,6 @@ export default function Home() {
   
   return (
     <PageTransition>
-      {/* Hero Section - Reduced top padding from py-16 to py-8 */}
       <section className="min-h-[90vh] flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10"></div>
@@ -180,7 +166,7 @@ export default function Home() {
               
               <div className="absolute inset-[-10px] rounded-full border-2 border-dashed border-primary/20 animate-rotate-slow"></div>
               
-              <div className="absolute inset-12 glass rounded-full z-10 animate-float overflow-hidden flex items-center justify-center group transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
+              <div className="absolute inset-12 glass rounded-full z-10 animate-float-very-slow overflow-hidden flex items-center justify-center group transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <img 
                   src={userData?.avatar_url || "https://via.placeholder.com/300?text=Profile"} 
