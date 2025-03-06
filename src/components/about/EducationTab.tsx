@@ -29,7 +29,7 @@ export function EducationTab() {
     },
     {
       institution: "Secondary School Certificate",
-      degree: "Mohammadpur Government High School",
+      degree: "Mohammadpur Government High School, Dhaka, Bangladesh",
       focus: "Science and Mathematics",
       icon: BookOpen,
       color: "text-purple-500"
