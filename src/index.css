@@ -322,5 +322,5 @@
 
 /* Adding the animation class */
 .animate-float-very-slow {
-  animation: float-very-slow 12s ease-in-out infinite;
+  animation: float-very-slow 8s ease-in-out infinite;
 }
