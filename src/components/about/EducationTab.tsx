@@ -14,30 +14,30 @@ export function EducationTab() {
   // Sample education data - replace with your actual education information
   const educationJourney: Education[] = [
     {
-      institution: "University of Technology",
-      degree: "Master of Science",
-      focus: "Computer Science & Artificial Intelligence",
+      institution: "Bachelor of Science",
+      degree: "KTH The Royal Institute of Technology, Stockholm, Sweden",
+      focus: "Computer Science",
       icon: GraduationCap,
       color: "text-blue-500"
     },
     {
-      institution: "State University",
-      degree: "Bachelor of Science",
-      focus: "Software Engineering",
+      institution: "Higher Secondary Education (A-Level / International Baccalaureate)",
+      degree: "Åva Gymnasium, Stockholm, Sweden",
+      focus: "Science",
       icon: BookOpen,
       color: "text-green-500"
     },
     {
-      institution: "Tech College",
-      degree: "Associate Degree",
-      focus: "Digital Systems & Programming",
+      institution: "Secondary School Certificate",
+      degree: "Mohammadpur Government High School",
+      focus: "Science and Mathematics",
       icon: BookOpen,
       color: "text-purple-500"
     },
     {
-      institution: "Science High School",
-      degree: "High School Diploma",
-      focus: "Mathematics & Computer Science",
+      institution: "Elementary education / Primary School Certificate",
+      degree: "Comilla Zilla School, Comilla, Bangladesh",
+      focus: "Basic education in literacy, numeracy, and foundational sciences.",
       icon: Building,
       color: "text-amber-500"
     }
