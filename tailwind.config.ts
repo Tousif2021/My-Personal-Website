@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -67,6 +66,10 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				code: {
+					DEFAULT: 'hsl(var(--code-background))',
+					foreground: 'hsl(var(--code-foreground))'
 				}
 			},
 			borderRadius: {
@@ -132,6 +135,20 @@ export default {
 				'shimmer': {
 					'0%': { backgroundPosition: '-468px 0' },
 					'100%': { backgroundPosition: '468px 0' }
+				},
+				'terminal-blink': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0' }
+				},
+				'matrix-fall': {
+					'0%': { transform: 'translateY(-100%)', opacity: '0' },
+					'10%': { opacity: '1' },
+					'100%': { transform: 'translateY(100vh)', opacity: '0.8' }
+				},
+				'code-pulse': {
+					'0%': { boxShadow: '0 0 5px rgba(0,255,170,0.1)' },
+					'50%': { boxShadow: '0 0 20px rgba(0,255,170,0.3)' },
+					'100%': { boxShadow: '0 0 5px rgba(0,255,170,0.1)' }
 				}
 			},
 			animation: {
@@ -148,7 +165,10 @@ export default {
 				'rotate-slow': 'rotate-slow 15s linear infinite',
 				'orbit': 'orbit 12s linear infinite',
 				'orbit-reverse': 'orbit-reverse 15s linear infinite',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				'terminal-blink': 'terminal-blink 1s step-end infinite',
+				'matrix-fall': 'matrix-fall 10s linear infinite',
+				'code-pulse': 'code-pulse 3s ease-in-out infinite'
 			}
 		}
 	},
