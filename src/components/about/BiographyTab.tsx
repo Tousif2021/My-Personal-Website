@@ -74,7 +74,7 @@ export function BiographyTab() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          Hey there! I'm a passionate software developer who loves turning ideas into reality through code. My journey into tech started with pure curiosity—wondering how digital products worked—and quickly turned into a full-blown obsession with building them myself.
+          Tousif again! I'm a passionate software developer who loves turning ideas into reality through code. My journey into tech started with pure curiosity—wondering how digital products worked—and quickly turned into a full-blown obsession with building them myself.
         </motion.p>
         
         <motion.p
