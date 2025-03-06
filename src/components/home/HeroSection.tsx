@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin, Rocket, ExternalLink, Terminal, Code, Sparkles, GraduationCap, BookOpen, ArrowDown } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Rocket, ExternalLink, Terminal, Code, Sparkles, GraduationCap, BookOpen, ArrowDown, Facebook, Instagram, Twitter, Twitch } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 import { motion } from "framer-motion";
@@ -33,7 +33,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
   });
 
   return (
-    <section className="min-h-[70vh] flex flex-col justify-center relative overflow-hidden">
+    <section className="min-h-[65vh] flex flex-col justify-center relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10"></div>
@@ -46,7 +46,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
         </div>
       </div>
       
-      <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-6 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 md:py-4 flex flex-col lg:flex-row items-center gap-6 md:gap-10">
         <div className="w-full lg:w-1/2 animate-fade-in order-2 lg:order-1" style={{ animationDelay: '0.2s' }}>
           {/* Header badge */}
           <motion.div 
@@ -95,7 +95,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg font-medium mb-6 max-w-xl relative"
+            className="text-lg font-medium mb-5 max-w-xl relative"
           >
             <div className="glass p-4 rounded-md border border-primary/10 backdrop-blur-md shadow-sm">
               <div className="absolute top-0 right-0 -mt-2 -mr-2">
@@ -115,7 +115,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5, staggerChildren: 0.1 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 mb-6"
           >
             <Button asChild size="lg" className="group relative overflow-hidden bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90 transition-all duration-500 shadow-md hover:shadow-lg hover:shadow-primary/20">
               <Link to="/projects" className="group flex items-center">
@@ -143,6 +143,46 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
                 <ExternalLink className="ml-2 h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-[-2px]" />
               </a>
             </Button>
+          </motion.div>
+          
+          {/* Social Media Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mb-4"
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-px bg-gradient-to-r from-primary/30 to-transparent flex-grow max-w-[60px]"></div>
+              <span className="text-sm font-medium text-foreground/70">Connect on Social Media</span>
+              <div className="h-px bg-gradient-to-l from-primary/30 to-transparent flex-grow max-w-[60px]"></div>
+            </div>
+            
+            <div className="flex flex-wrap gap-3">
+              <Button variant="outline" size="icon" asChild className="rounded-full w-10 h-10 bg-gradient-to-br from-blue-500/10 to-blue-600/5 hover:from-blue-500/20 hover:to-blue-600/10 border-blue-500/30 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-blue-500/20">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center justify-center">
+                  <Facebook className="h-5 w-5 text-blue-500" />
+                </a>
+              </Button>
+              
+              <Button variant="outline" size="icon" asChild className="rounded-full w-10 h-10 bg-gradient-to-br from-pink-500/10 to-purple-600/5 hover:from-pink-500/20 hover:to-purple-600/10 border-pink-500/30 hover:border-pink-500/50 transition-all duration-300 shadow-sm hover:shadow-pink-500/20">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center justify-center">
+                  <Instagram className="h-5 w-5 text-pink-500" />
+                </a>
+              </Button>
+              
+              <Button variant="outline" size="icon" asChild className="rounded-full w-10 h-10 bg-gradient-to-br from-blue-400/10 to-blue-500/5 hover:from-blue-400/20 hover:to-blue-500/10 border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 shadow-sm hover:shadow-blue-400/20">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="flex items-center justify-center">
+                  <Twitter className="h-5 w-5 text-blue-400" />
+                </a>
+              </Button>
+              
+              <Button variant="outline" size="icon" asChild className="rounded-full w-10 h-10 bg-gradient-to-br from-purple-500/10 to-purple-600/5 hover:from-purple-500/20 hover:to-purple-600/10 border-purple-500/30 hover:border-purple-500/50 transition-all duration-300 shadow-sm hover:shadow-purple-500/20">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitch" className="flex items-center justify-center">
+                  <Twitch className="h-5 w-5 text-purple-500" />
+                </a>
+              </Button>
+            </div>
           </motion.div>
         </div>
         
