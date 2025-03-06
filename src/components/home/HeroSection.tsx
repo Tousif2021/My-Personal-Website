@@ -33,7 +33,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
   });
 
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center relative overflow-hidden">
+    <section className="min-h-[70vh] flex flex-col justify-center relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10"></div>
