@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
@@ -175,8 +174,24 @@
   }
   
   .tech-pattern {
-    background-image: radial-gradient(rgba(var(--primary-rgb), 0.1) 2px, transparent 2px);
-    background-size: 30px 30px;
+    background-image: 
+      radial-gradient(circle at 25px 25px, rgba(var(--primary-rgb), 0.15) 2px, transparent 0),
+      linear-gradient(rgba(var(--primary-rgb), 0.1) 1px, transparent 0),
+      linear-gradient(90deg, rgba(var(--primary-rgb), 0.1) 1px, transparent 0);
+    background-size: 50px 50px, 25px 25px, 25px 25px;
+    background-position: -25px -25px, -20px -20px, -20px -20px;
+  }
+  
+  .circuit-pattern {
+    background-image: 
+      linear-gradient(90deg, rgba(var(--primary-rgb), 0.07) 1px, transparent 1px),
+      linear-gradient(rgba(var(--primary-rgb), 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 4px),
+      linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 4px),
+      linear-gradient(transparent 3px, rgba(var(--primary-rgb), 0.07) 3px, rgba(var(--primary-rgb), 0.07) 4px, transparent 4px),
+      linear-gradient(90deg, transparent 3px, rgba(var(--primary-rgb), 0.07) 3px, rgba(var(--primary-rgb), 0.07) 4px, transparent 4px);
+    background-size: 40px 40px, 40px 40px, 160px 160px, 160px 160px, 40px 40px, 40px 40px;
+    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px, -1px -1px, -1px -1px;
   }
   
   .effect-reduce * {
@@ -343,9 +358,10 @@
     }
   }
 
-  /* Matrix falling animation */
+  /* Matrix falling animation - updated */
   .matrix-container {
-    @apply fixed inset-0 pointer-events-none overflow-hidden opacity-10 z-0;
+    @apply fixed inset-0 pointer-events-none overflow-hidden z-0;
+    opacity: 0.15; /* Make more visible than before */
   }
 
   .matrix-column {
@@ -354,54 +370,71 @@
     animation: matrix-fall var(--fall-duration, 10s) linear infinite;
     animation-delay: var(--fall-delay, 0s);
   }
-}
 
-/* Page transitions */
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
+  @keyframes matrix-fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    10% {
+      opacity: var(--matrix-opacity, 1);
+    }
+    90% {
+      opacity: var(--matrix-opacity, 0.8);
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 500ms, transform 500ms;
-}
+  /* Page transitions */
+  .page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-.page-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms, transform 500ms;
+  }
 
-.page-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 400ms, transform 400ms;
-}
+  .page-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
+  .page-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 400ms, transform 400ms;
+  }
 
-/* Adding very slow float animation for profile */
-@keyframes float-very-slow {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
-}
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
 
-/* Adding the animation class */
-.animate-float-very-slow {
-  animation: float-very-slow 8s ease-in-out infinite;
-}
+  /* Adding very slow float animation for profile */
+  @keyframes float-very-slow {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
 
-/* For matrix effect */
-:root {
-  --primary-rgb: 196, 72, 65;
-}
+  /* Adding the animation class */
+  .animate-float-very-slow {
+    animation: float-very-slow 8s ease-in-out infinite;
+  }
 
-.dark {
-  --primary-rgb: 196, 72, 165;
+  /* For matrix effect */
+  :root {
+    --primary-rgb: 196, 72, 65;
+  }
+
+  .dark {
+    --primary-rgb: 196, 72, 165;
+  }
 }
