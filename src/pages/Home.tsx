@@ -98,8 +98,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10"></div>
         </div>
         
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 py-8 flex flex-col lg:flex-row items-center gap-12">
-          <div className="lg:w-1/2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+          <div className="w-full lg:w-1/2 animate-fade-in order-2 lg:order-1" style={{ animationDelay: '0.2s' }}>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold tracking-tight mb-4"
             >
               <span className="text-foreground hover:text-primary transition-all duration-500 inline-flex items-center">
                 {displayText}{cursor}
@@ -124,7 +124,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-2xl md:text-3xl font-display text-muted-foreground mb-6"
+              className="text-xl md:text-2xl lg:text-3xl font-display text-muted-foreground mb-6"
             >
               KTH THE ROYAL INSTITUTE OF TECHNOLOGY
             </motion.h2>
@@ -172,9 +172,9 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="lg:w-1/2 relative"
+            className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2"
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
+            <div className="relative w-full max-w-[240px] md:max-w-[280px] lg:max-w-md aspect-square mx-auto">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-full animate-pulse-slow"></div>
               <div className="absolute inset-6 bg-gradient-to-bl from-primary/30 to-blue-500/20 rounded-full rotate-45 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
               
@@ -198,7 +198,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.5 }}
-          className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce"
+          className="absolute bottom-4 md:bottom-10 left-0 right-0 flex justify-center animate-bounce"
         >
           <button
             onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
