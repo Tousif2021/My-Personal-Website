@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BiographyTab } from "@/components/about/BiographyTab";
 import { ProjectJourneyTab } from "@/components/about/ProjectJourneyTab";
 import { PhilosophyTab } from "@/components/about/PhilosophyTab";
+import { EducationTab } from "@/components/about/EducationTab";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -45,14 +46,19 @@ export default function About() {
             className="mt-16 max-w-4xl mx-auto glass rounded-xl p-1"
           >
             <Tabs defaultValue="bio" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-12 bg-background/20 backdrop-blur-lg">
+              <TabsList className="grid w-full grid-cols-4 mb-12 bg-background/20 backdrop-blur-lg">
                 <TabsTrigger value="bio" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/30 data-[state=active]:to-blue-500/30 data-[state=active]:backdrop-blur-md transition-all duration-300">Biography</TabsTrigger>
+                <TabsTrigger value="education" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/30 data-[state=active]:to-blue-500/30 data-[state=active]:backdrop-blur-md transition-all duration-300">Education</TabsTrigger>
                 <TabsTrigger value="journey" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/30 data-[state=active]:to-blue-500/30 data-[state=active]:backdrop-blur-md transition-all duration-300">Project Journey</TabsTrigger>
                 <TabsTrigger value="philosophy" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/30 data-[state=active]:to-blue-500/30 data-[state=active]:backdrop-blur-md transition-all duration-300">Philosophy</TabsTrigger>
               </TabsList>
               
               <TabsContent value="bio" className="animate-fade-in px-4 pb-4">
                 <BiographyTab />
+              </TabsContent>
+              
+              <TabsContent value="education" className="animate-fade-in px-4 pb-4">
+                <EducationTab />
               </TabsContent>
               
               <TabsContent value="journey" className="animate-fade-in px-4 pb-4">
