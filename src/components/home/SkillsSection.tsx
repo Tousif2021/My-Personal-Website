@@ -10,14 +10,14 @@ interface SkillsSectionProps {
 
 export function SkillsSection({ allSkills, isLoading }: SkillsSectionProps) {
   return (
-    <section id="skills" className="py-20 bg-muted/30">
+    <section id="skills" className="py-12 bg-muted/30">
       <div className="container max-w-7xl mx-auto px-6 md:px-8">
         <SectionHeading 
           heading="Skills & Technologies"
           subheading="What I work with"
         />
         
-        <div className="mt-12">
+        <div className="mt-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

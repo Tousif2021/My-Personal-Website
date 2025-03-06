@@ -33,7 +33,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
   });
 
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center relative overflow-hidden">
+    <section className="min-h-[85vh] flex flex-col justify-center relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10"></div>
@@ -46,7 +46,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
         </div>
       </div>
       
-      <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-6 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
         <div className="w-full lg:w-1/2 animate-fade-in order-2 lg:order-1" style={{ animationDelay: '0.2s' }}>
           {/* Header badge */}
           <motion.div 
@@ -64,7 +64,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative mb-4 group"
+            className="relative mb-3 group"
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-primary/0 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <h1 className="relative text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold tracking-tight">
@@ -79,7 +79,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative mb-6 group"
+            className="relative mb-4 group"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 to-primary/0 rounded-md blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative flex items-center gap-2">
@@ -95,7 +95,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg font-medium mb-8 max-w-xl relative"
+            className="text-lg font-medium mb-6 max-w-xl relative"
           >
             <div className="glass p-4 rounded-md border border-primary/10 backdrop-blur-md shadow-sm">
               <div className="absolute top-0 right-0 -mt-2 -mr-2">
@@ -154,7 +154,7 @@ export function HeroSection({ userName, userData }: HeroSectionProps) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-4 md:bottom-10 left-0 right-0 flex justify-center animate-bounce"
+        className="absolute bottom-2 md:bottom-6 left-0 right-0 flex justify-center animate-bounce"
       >
         <button
           onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
