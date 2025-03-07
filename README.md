@@ -1,6 +1,4 @@
-# My Dynamic CV Website
-
-![Portfolio Preview](https://via.placeholder.com/150)
+# My Dynamic Website (DIGITAL RESUME)
 
 ## 🚀 Overview
 This project is a **next-level** personal CV website with a futuristic **Matrix-inspired** background and a **developer-themed** design. It showcases my **skills, experience, projects, and contact information** in a visually stunning and interactive way.
